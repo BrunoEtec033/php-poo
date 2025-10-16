@@ -32,7 +32,16 @@ reset-db:
 inserts:
 	docker exec -i $(CONTAINER_NAME) mysql -u $(DB_USER) -p$(DB_PASS) $(DB_NAME) < $(INSERTS)
 
-#Up container Dockers
+# Up container Dockers
 start:
-	dokcer-compose-up d
+	docker-compose up -d
+# Down container Dockers
+stop:
+	docker-compose down
+# Restart container Dockers
+restart: 
+	stop start
 
+# Verifica logs do container Web
+logs:
+	docker logs -f web
